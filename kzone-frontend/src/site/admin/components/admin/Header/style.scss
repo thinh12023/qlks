@@ -1,0 +1,40 @@
+.screenShort {
+  overflow-y: scroll;
+  height: 82vh !important;
+} 
+button:active {
+  background-color: red;
+}
+._c {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.ant-popover-inner-content {
+  color: #000 !important;
+  width: 250px;
+  .ant-select{ 
+    font-size: 11px;  
+  }
+}
+ 
+
+.page-header {
+  .page-logo {
+    img {
+      height: 28px;
+    }
+  }
+} 
+// .ant-popover {
+  //   position: fixed !important;
+  // }
+.ant-popover.ant-popover-placement-bottomRight{
+  position: fixed;
+}
+.custom-icon {
+  svg {
+    color: #edb997;
+    font-size: 20px !important;
+  }
+}

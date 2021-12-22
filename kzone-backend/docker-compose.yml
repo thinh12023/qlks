@@ -1,0 +1,46 @@
+version: "3.4"
+
+services:
+  # app:
+  #   image: registry.gitlab.com/thegiau.pham/kzone-api:develop
+  #   # build: .
+  #   container_name: k-api
+  #   # volumes:
+  #     # - ./:/app
+  #   restart: unless-stopped
+  #   env_file: .env
+  #   environment:
+  #     - POSTGRES_DB=${POSTGRES_DB}
+  #     - POSTGRES_USER=${POSTGRES_USER}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #     - PORT=${PORT}
+  #   ports:
+  #     - ${PUBLIC_PORT}:${PORT}
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     service1_net:
+  #       ipv4_address: 172.22.0.100
+
+  db:
+    image: postgres:alpine3.14
+    container_name: k-postgres
+    volumes:
+    - .docker/data/db:/var/lib/postgresql/data
+    restart: unless-stopped
+    # user: "1000:1000"
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      service1_net:
+        ipv4_address: 172.22.0.50
+networks:
+  service1_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16

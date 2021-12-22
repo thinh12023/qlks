@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  frontend:
+    # image: registry.gitlab.com/thegiau.pham/kzone-admin:latest
+    container_name: kzone-admin
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
